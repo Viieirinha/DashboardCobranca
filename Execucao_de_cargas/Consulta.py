@@ -1,13 +1,16 @@
 import psycopg2
 import pandas as pd
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
 db_params = {
-    'host': '144.22.173.101',
-    'port': 5432,
-    'user': 'cliente_matheus_fagundes',
-    'password': 'YzkwMTE5YzYxY2Q5',
-    'database': 'dbemp00489'
+    'host': os.getenv('DB_HOST'),
+    'port': os.getenv('DB_PORT'),
+    'user': os.getenv('DB_USER'),
+    'password': os.getenv('DB_PASSWORD'),
+    'database': os.getenv('DB_NAME')
 }
 
 query = """

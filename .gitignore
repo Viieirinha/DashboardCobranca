@@ -1,1 +1,12 @@
-Bases/
+# Ignorar credenciais e variaveis de ambiente
+.env
+
+# Ignorar as bases de dados (seguranca dos clientes)
+Bases/*.csv
+Bases/*.xlsx
+
+# Ignorar o ambiente virtual Python (se houver)
+venv/
+
+# Ignorar arquivos temporarios do Python
+__pycache__/

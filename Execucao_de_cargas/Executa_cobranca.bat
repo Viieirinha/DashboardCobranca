@@ -1,14 +1,19 @@
+@echo off
+echo Iniciando a carga de dados...
+
 cd C:\Users\matheus.fagundes\Documents\Dash_Cobranca\Execucao_de_cargas
-set PGUSER=cliente_matheus_fagundes
-set PGPASSWORD=YzkwMTE5YzYxY2Q5
-set PGHOST=144.22.173.101
-set PGPORT=5432
-set PGDATABASE=dbemp00489
+
+for /F "usebackq tokens=1,* delims==" %%A in ("C:\Users\matheus.fagundes\Documents\Dash_Cobranca\.env") do (
+    set %%A=%%B
+)
+
+set PGPASSWORD=%DB_PASSWORD%
 
 set QUERY_FILE=C:\Users\matheus.fagundes\Documents\Dash_Cobranca\Execucao_de_cargas\cobranca.sql
 set OUTPUT_FILE=C:\Users\matheus.fagundes\Documents\Dash_Cobranca\Bases\Fat_gerado_por.csv
-
 set PGCLIENTENCODING=UTF-8
-psql -U %PGUSER% -d %PGDATABASE% -h %PGHOST% -p %PGPORT% -A -F ";" -f "%QUERY_FILE%" -o "%OUTPUT_FILE%"
 
+psql -U %DB_USER% -d %DB_NAME% -h %DB_HOST% -p %DB_PORT% -A -F ";" -f "%QUERY_FILE%" -o "%OUTPUT_FILE%"
+
+echo Extracao finalizada com sucesso!
 pause

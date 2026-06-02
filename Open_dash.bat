@@ -1,0 +1,1 @@
+streamlit run fat_gerado_por.py --server.port 8501
